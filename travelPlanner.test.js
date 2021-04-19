@@ -23,9 +23,9 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
 
   it("returns an array with the same length as the destinations", () => {
     const destinations = new Map();
-    destinations.set("a", null);
-    destinations.set("b", null);
-    destinations.set("c", null);
+    destinations.set("a");
+    destinations.set("b");
+    destinations.set("c");
 
     const travelPlanner = new TravelPlanner({ destinations });
     const returnValue = travelPlanner.calculateOptimalRoute();
@@ -35,9 +35,9 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
 
   it("returns an array containing all of the keys defined in destinations Map", () => {
     const destinations = new Map();
-    destinations.set("a", null);
-    destinations.set("b", null);
-    destinations.set("c", null);
+    destinations.set("a");
+    destinations.set("b");
+    destinations.set("c");
 
     const travelPlanner = new TravelPlanner({ destinations });
     const returnValue = travelPlanner.calculateOptimalRoute();
@@ -49,9 +49,9 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
 
   it("returns correct route when there are no dependencies", () => {
     const destinations = new Map();
-    destinations.set("a", null);
-    destinations.set("b", null);
-    destinations.set("c", null);
+    destinations.set("a");
+    destinations.set("b");
+    destinations.set("c");
 
     const travelPlanner = new TravelPlanner({ destinations });
     const returnValue = travelPlanner.calculateOptimalRoute();
@@ -63,12 +63,12 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
 
   it("returns correct route when there are dependencies", () => {
     const destinations = new Map();
-    destinations.set("a", null);
+    destinations.set("a");
     destinations.set("b", "c");
     destinations.set("c", "e");
     destinations.set("d", "f");
-    destinations.set("e", null);
-    destinations.set("f", null);
+    destinations.set("e");
+    destinations.set("f");
 
     const travelPlanner = new TravelPlanner({ destinations });
     const returnValue = travelPlanner.calculateOptimalRoute();
@@ -80,12 +80,12 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
 
   it("returns correct route when there are mutual dependencies", () => {
     const destinations = new Map();
-    destinations.set("a", null);
+    destinations.set("a");
     destinations.set("b", "e");
     destinations.set("c", "e");
     destinations.set("d", "e");
-    destinations.set("e", null);
-    destinations.set("f", null);
+    destinations.set("e");
+    destinations.set("f");
 
     const travelPlanner = new TravelPlanner({ destinations });
     const returnValue = travelPlanner.calculateOptimalRoute();
@@ -97,7 +97,7 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
 
   it("throws Error when there is a circle in the dependencies", () => {
     const destinations = new Map();
-    destinations.set("a", null);
+    destinations.set("a");
     destinations.set("b", "c");
     destinations.set("c", "d");
     destinations.set("d", "b");
@@ -113,10 +113,10 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
 
   it("throws Error when there is a dependency for a non-existing destination", () => {
     const destinations = new Map();
-    destinations.set("a", null);
+    destinations.set("a");
     destinations.set("b", "c");
     destinations.set("c", "e");
-    destinations.set("d", null);
+    destinations.set("d");
 
     const travelPlanner = new TravelPlanner({ destinations });
 

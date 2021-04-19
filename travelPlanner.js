@@ -24,7 +24,8 @@ TravelPlanner.prototype.calculateOptimalRoute = function() {
 
 /**
  * Inserts the current destination after all of its dependencies into optimalRoute
- * @param {String} destination Character marking the desctination
+ * @param {String} destination Character marking the destination
+ * @param {Array} dependencyChain Helper array for the recursion, please ignore
  */
 TravelPlanner.prototype._sortDestination = function(destination, dependencyChain = []) {
   const dependency = this._destinations.get(destination);
