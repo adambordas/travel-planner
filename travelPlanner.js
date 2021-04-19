@@ -26,10 +26,15 @@ TravelPlanner.prototype.calculateOptimalRoute = function() {
  * Inserts the current destination after all of its dependencies into optimalRoute
  * @param {String} destination Character marking the desctination
  */
-TravelPlanner.prototype._sortDestination = function(destination) {
+TravelPlanner.prototype._sortDestination = function(destination, dependencyChain = []) {
   const dependency = this._destinations.get(destination);
   if (dependency && !this._optimalRoute.has(dependency)) {
-    this._sortDestination(dependency);
+    if (dependencyChain.includes(destination)) {
+      throw new Error("Circle in dependencies");
+    }
+
+    dependencyChain.push(destination);
+    this._sortDestination(dependency, dependencyChain);
   }
 
   this._optimalRoute.add(destination);
