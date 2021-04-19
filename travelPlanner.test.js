@@ -126,20 +126,4 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
 
     expect(caller).toThrow("Non-existing destination in dependencies");
   });
-
-  it("throws Error when a destination appears multiple times", () => {
-    const destinations = new Map();
-    destinations.set("a", null);
-    destinations.set("b", "c");
-    destinations.set("c", "d");
-    destinations.set("d", "b");
-
-    const travelPlanner = new TravelPlanner({ destinations });
-
-    const caller = () => {
-      travelPlanner.calculateOptimalRoute();
-    };
-
-    expect(caller).toThrow("Destination duplication");
-  });
 });
