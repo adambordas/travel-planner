@@ -32,6 +32,11 @@ TravelPlanner.prototype._sortDestination = function(destination, dependencyChain
 
   if (dependency && !dependencyAlreadyInRoute) {
 
+    const dependencyInDestinations = this._destinations.has(dependency);
+    if(!dependencyInDestinations) {
+      throw new Error("Non-existing destination in dependencies");
+    }
+
     if (dependencyChain.includes(destination)) {
       throw new Error("Circle in dependencies");
     }
