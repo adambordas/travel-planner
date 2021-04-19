@@ -115,8 +115,8 @@ describe("TravelPlanner.prototype.calculateOptimalRoute()", () => {
     const destinations = new Map();
     destinations.set("a", null);
     destinations.set("b", "c");
-    destinations.set("c", "d");
-    destinations.set("d", "b");
+    destinations.set("c", "e");
+    destinations.set("d", null);
 
     const travelPlanner = new TravelPlanner({ destinations });
 
