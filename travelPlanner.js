@@ -28,13 +28,17 @@ TravelPlanner.prototype.calculateOptimalRoute = function() {
  */
 TravelPlanner.prototype._sortDestination = function(destination, dependencyChain = []) {
   const dependency = this._destinations.get(destination);
-  if (dependency && !this._optimalRoute.has(dependency)) {
+  const dependencyAlreadyInRoute = this._optimalRoute.has(dependency);
+
+  if (dependency && !dependencyAlreadyInRoute) {
+
     if (dependencyChain.includes(destination)) {
       throw new Error("Circle in dependencies");
     }
 
     dependencyChain.push(destination);
     this._sortDestination(dependency, dependencyChain);
+
   }
 
   this._optimalRoute.add(destination);
