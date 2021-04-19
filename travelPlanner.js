@@ -6,7 +6,7 @@
  * @property {Map} options.destinations Map<destination, dependency>
  */
 function TravelPlanner({ destinations }) {
-  this._destinations = destinations;
+  this._destinations = new Map(destinations);
   this._optimalRoute = new Set();
 }
 
